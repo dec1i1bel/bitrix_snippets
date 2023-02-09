@@ -13,7 +13,6 @@ $APPLICATION->IncludeComponent(
 		"COUNT" => "",
 		"SORT_FIELD" => "ID",
 		"SORT_DIRECTION" => "ASC",
-		"COMPONENT_TEMPLATE" => ".default"
 	),
 	false
 );
