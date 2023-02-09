@@ -46,7 +46,7 @@ class ItemsListComponent extends CBitrixComponent
                             'DATE_ACTIVE_FROM',
                             'DETAIL_PAGE_URL',
                             'PREVIEW_TEXT',
-                            'PREVIEW_TEXT_TYPE'
+                            'PREVIEW_PICTURE',
                         ];
 
                         $navStartParams = ($this->arParams['COUNT'] > 0) ?
@@ -56,13 +56,19 @@ class ItemsListComponent extends CBitrixComponent
                         $rsItems = \CIBlockElement::GetList($order, $filter, false, $navStartParams, $select);
 
                         while ($item = $rsItems->GetNext()) {
-                            $this->arResult['ITEMS'][] = [
+                            $props = [
                                 'ID' => $item['ID'],
                                 'NAME' => $item['NAME'],
                                 'DATE' => $item['DATE_ACTIVE_FROM'],
                                 'URL' => $item['DETAIL_PAGE_URL'],
-                                'TEXT' => $item['PREVIEW_TEXT']
+                                'TEXT' => $item['PREVIEW_TEXT'],
                             ];
+                            if (!empty($item['PREVIEW_PICTURE'])) {
+                                $props['PREVIEW_PICTURE'] = \CFile::GetPath($item['PREVIEW_PICTURE']);
+                            }
+
+                            $this->arResult['ITEMS'][] = $props;
+
                             $taggedCache->registerTag('iblock_'.$this->arParams['IBLOCK_ID'].'_item_'.$item['ID']);
                         }
                         $taggedCache->registerTag('iblock_id_'.$this->arParams['IBLOCK_ID']);
