@@ -1,0 +1,19 @@
+<h2>@php echo $arResult['SECTION_NAME'] @endphp</h2>
+<h3>@lang('SECTION_SUB_HEADER')</h3>
+@php if (count($arResult['ITEMS'])) { @endphp
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @php foreach ($arResult['ITEMS'] as $item) { @endphp
+            <div class="col">
+               <div class="card h-100">
+                   @php if (!empty($item['PREVIEW_PICTURE'])) { @endphp
+                       <img src="@php echo $item['PREVIEW_PICTURE'] @endphp" class="card-img-top" alt="@php echo $item['NAME'] @endphp">
+                   @php } @endphp
+                   <div class="card-body">
+                       <h5 class="card-title"><a href="@php echo $item['URL']; @endphp">@php echo $item['NAME'] @endphp</a></h5>
+                       <p class="card-text">@php echo $item['TEXT'] @endphp</p>
+                   </div>
+               </div>
+           </div>
+        @php } @endphp
+    </div>
+@php } @endphp
