@@ -6,7 +6,6 @@ use Bitrix\Main\Application as App;
 use Bitrix\Main\Engine\Response\Json;
 use Bitrix\Main\Type\DateTime;
 use Bitrix\Main\Loader;
-use Bitrix\Highloadblock\HighloadBlockTable as HLTable;
 
 try {
     $req = App::getInstance()->getContext()->getRequest();
@@ -25,12 +24,7 @@ try {
     if (Loader::includeModule('highloadblock')) {
         $discountHL = 'DemoDiscount';
 
-        $rsHlBlock = HLTable::getList([
-            'filter' => ['=NAME' => $discountHL]
-        ]);
-
-        if ($hlBlock = $rsHlBlock->fetch()) {
-            $hlClass = (HLTable::compileEntity($hlBlock))->getDataClass();
+        if ($hlClass = getHLClassByHLName($discountHL)) {
 
             $rsHlData = $hlClass::getList([
                 "select" => ['*'],
