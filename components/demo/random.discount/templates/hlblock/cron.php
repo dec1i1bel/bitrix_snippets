@@ -25,7 +25,7 @@ try {
             $rsHlData = $hlClass::getList([
                 "select" => ['*'],
                 'filter' => [
-                    '>UF_DISCOUNT_END_TIMESTAMP' => $currentTimestamp-$discountTimestamp,
+                    '>UF_DISCOUNT_END_TIMESTAMP' => $currentTimestamp - $discountTimestamp,
                 ],
             ]);
 

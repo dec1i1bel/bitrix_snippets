@@ -2,6 +2,10 @@
 
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
+use Bitrix\Main\Localization\Loc;
+
+Loc::loadMessages(__FILE__);
+
 class DiscountGetComponent extends \CBitrixComponent
 {
     public function executeComponent()
@@ -10,10 +14,8 @@ class DiscountGetComponent extends \CBitrixComponent
         try {
             if ($USER && $USER->IsAuthorized()) {
                 $this->arResult['USER']['ID'] = $USER->GetID();
-            } else {
-                $this->arResult['USER']['MESSAGE_NOT_AUTHORIZED'] = 'Пожалуйста авторизуйтесь для получения скидки';
+                $this->includeComponentTemplate();
             }
-            $this->includeComponentTemplate();
         } catch (Exception $e) {
             ShowError($e->getMessage());
         }
