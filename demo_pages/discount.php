@@ -11,6 +11,10 @@ Loc::loadMessages(__FILE__);
 
 $APPLICATION->SetTitle(Loc::getMessage('TITLE'));
 
+?>
+<hr>
+<?php
+
 if (!($USER->IsAuthorized())) {
     ?>
     <p><?= Loc::getMessage('NOT_AUTHORIZED') ?></p>

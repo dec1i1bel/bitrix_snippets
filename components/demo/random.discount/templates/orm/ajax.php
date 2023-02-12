@@ -8,6 +8,10 @@ use Bitrix\Main\Type\DateTime;
 use Demo\Orm\RandomDiscountTable;
 use Demo\Utils\Validators;
 
+if (!check_bitrix_sessid()) {
+    die('access denied');
+}
+
 try {
     $req = App::getInstance()->getContext()->getRequest();
 
@@ -15,11 +19,6 @@ try {
     $discountCheckCode = $req->getPost('discount_orm')['check'];
     $currentTimestamp = intval((new DateTime())->getTimestamp());
     $checkTimestamp = 10800; // при проверке промокода скидка активна 3 часа
-
-    printr([
-        $userId,
-        $discountCheckCode,
-    ]);
 
     $ajaxResponse = [
         'discount' => [],

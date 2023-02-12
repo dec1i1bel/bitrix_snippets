@@ -11,13 +11,14 @@ Loc::loadMessages(__FILE__);
 $user = $arResult['USER'];
 
 ?>
-<h2><?= Loc::getMessage('TYPE_HLBLOCK') ?></h2>
+<h2 class="mt-4"><?= Loc::getMessage('TYPE_HLBLOCK') ?></h2>
 <form
         id="form_get_discount_hlblock"
         action="<?= $this->GetFolder() . '/ajax.php' ?>"
         method="post"
         enctype="multipart/form-data"
         style="max-width: 520px"
+        class="border p-3"
 >
     <?= bitrix_sessid_post() ?>
     <input type="hidden" id="user_hlblock_id" name="user_hlblock[id]" value="<?= $user['ID'] ?>">

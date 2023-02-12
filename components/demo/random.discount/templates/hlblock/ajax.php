@@ -7,6 +7,10 @@ use Bitrix\Main\Engine\Response\Json;
 use Bitrix\Main\Type\DateTime;
 use Bitrix\Main\Loader;
 
+if (!check_bitrix_sessid()) {
+    die('access denied');
+}
+
 try {
     $req = App::getInstance()->getContext()->getRequest();
 
