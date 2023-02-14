@@ -37,4 +37,12 @@ $user = $arResult['USER'];
         <button type="submit" class="btn btn-primary"><?= Loc::getMessage('HL_GET_DISCOUNT') ?></button>
     </div>
     <p class="discount-status-message js-discount-status-message-hlblock"></p>
+    <div class="mb-3">
+        <label for="discount_hlblock_check" class="form-label"><?= Loc::getMessage('HL_PUT_PROMOCODE') ?></label>
+        <input type="text" value="" id="discount_hlblock_check" name="discount_hlblock[check]" class="form-control">
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary"><?= Loc::getMessage('HL_CHECK_DISCOUNT') ?></button>
+    </div>
+    <p class="discount-status-message js-check-status-message-hlblock"></p>
 </form>

@@ -8,7 +8,6 @@ class Validators
      * Проверка типа
      *
      * @param $var
-     * @param string $type - доступны: 'integer'
      * @return bool
      */
     public static function validateInteger($var): bool
@@ -22,7 +21,6 @@ class Validators
      */
     public static function validateString(string $string): bool
     {
-        // toDo: сделать валидацию строки
-        return true;
+        return preg_match("/[^a-z\s]/iu", mb_strtolower($string)) !== false;
     }
 }

@@ -16,20 +16,13 @@ $(function () {
             url: formAction,
             data: formData,
             success: function (response) {
-                console.log([
-                    response,
-                    response.discount.percentage,
-                    typeof response.isPromoCodeChecked
-                ]);
                 if (typeof response.isPromoCodeChecked != 'undefined') {
-                    console.log('__if__');
                     if (response.isPromoCodeChecked == 'true') {
                         $('.js-check-status-message-orm').text('Ваша скидка: ' + response.discount.percentage + '%');
                     } else {
                         $('.js-check-status-message-orm').text('Скидка не доступна');
                     }
                 } else {
-                    console.log('__else__');
                     $('#discount_orm_quantity').attr('value', response.discount.percentage);
                     $('#discount_orm_code').attr('value', response.discount.promoCode);
 

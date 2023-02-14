@@ -12,7 +12,7 @@ try {
         $discountHL = 'DemoDiscount';
 
         $currentTimestamp = intval((new DateTime())->getTimestamp());
-        $discountTimestamp = 1; // период действия скидки
+        $discountTimestamp = 86400;
 
         $rsHlBlock = HLTable::getList([
             'filter' => ['=NAME' => $discountHL],
@@ -23,7 +23,7 @@ try {
             $hlClass = (HLTable::compileEntity($hlBlock))->getDataClass();
 
             $rsHlData = $hlClass::getList([
-                "select" => ['*'],
+                "select" => ['ID'],
                 'filter' => [
                     '>UF_DISCOUNT_END_TIMESTAMP' => $currentTimestamp - $discountTimestamp,
                 ],

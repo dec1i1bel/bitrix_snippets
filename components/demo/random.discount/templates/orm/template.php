@@ -40,8 +40,8 @@ $user = $arResult['USER'];
     <div class="mb-3">
         <button type="submit" class="btn btn-primary"><?= Loc::getMessage('ORM_CHECK_DISCOUNT') ?></button>
     </div>
-    <p class="check-status-message js-check-status-message-orm"></p>
+    <p class="discount-status-message js-check-status-message-orm"></p>
     <?php
-    //toDo: поле + ajax проверки промокода, cron удаления протухших скидок
+    //toDo: cron удаления протухших скидок
     ?>
 </form>
